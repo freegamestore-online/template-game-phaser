@@ -85,8 +85,10 @@ class PlayScene extends Phaser.Scene {
     if (this.cursors?.left.isDown) this.basket.x = Math.max(36, this.basket.x - 6);
     if (this.cursors?.right.isDown) this.basket.x = Math.min(VW - 36, this.basket.x + 6);
 
-    // A fruit that falls past the bottom costs a life.
-    for (const obj of this.fruit.getChildren()) {
+    // A fruit that falls past the bottom costs a life. Iterate a SNAPSHOT:
+    // drop.destroy() synchronously removes the child from the group's live array,
+    // which would make a plain for-of skip the next element in the same frame.
+    for (const obj of [...this.fruit.getChildren()]) {
       const drop = obj as Phaser.GameObjects.Arc;
       if (drop.y > VH + 20) {
         drop.destroy();
