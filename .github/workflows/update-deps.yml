@@ -1,9 +1,10 @@
 # Monthly in-range dependency refresh. Templates deploy games with
 # --frozen-lockfile, so a game is pinned to whatever this repo's lockfile
 # held when the game was generated — without this cron the templates (and
-# every new game) silently age. In-range only (respects package.json ranges);
-# major bumps stay a deliberate human decision because the VibeCode agent's
-# engine guides are written against specific major APIs.
+# every new game) silently age. Updates to LATEST (majors included) — the
+# build step gates the commit, so a breaking release fails the run (visibly)
+# instead of landing. If an engine major changes its API, update the VibeCode
+# agent's ENGINE_GUIDES entry alongside fixing the template.
 name: Update dependencies
 on:
   schedule:
@@ -22,11 +23,11 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --no-frozen-lockfile
-      - run: pnpm update -r
+      - run: pnpm up -r --latest
       - run: pnpm build
       - name: Commit refreshed lockfile if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
-          git diff --cached --quiet || { git commit -m "chore: monthly in-range dependency refresh"; git push; }
+          git diff --cached --quiet || { git commit -m "chore: monthly dependency refresh (latest)"; git push; }
