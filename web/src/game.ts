@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 
-// A complete, playable game built on Phaser 3 — the most widely-used browser game
+// A complete, playable game built on Phaser 4 — the most widely-used browser game
 // engine. Phaser gives you a scene lifecycle (preload/create/update), arcade
 // physics, groups, input and a scaler for free, so you write game logic, not a
 // render loop. Replace the body of PlayScene to build your own game; keep

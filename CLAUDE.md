@@ -1,15 +1,15 @@
 # APPNAME
 
-A free game on FreeGameStore, built on the **Phaser 3** browser game engine.
+A free game on FreeGameStore, built on the **Phaser 4** browser game engine.
 
 - Subdomain: `APPNAME.freegamestore.online`
 - Dev: `pnpm install && pnpm dev`
 - Build: `pnpm build`
 - Deploy: `git push origin main` (auto-deploys to R2 via GitHub Actions)
 
-## Engine: Phaser 3
+## Engine: Phaser 4
 
-This template uses [Phaser 3](https://phaser.io) — the most widely-used HTML5
+This template uses [Phaser 4](https://phaser.io) — the most widely-used HTML5
 game engine. It gives you a scene lifecycle, arcade & matter physics, sprite
 groups, tweens, input and a responsive scaler out of the box, so you write game
 logic instead of a render loop. Phaser is the right choice when a game grows past

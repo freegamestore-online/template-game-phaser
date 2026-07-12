@@ -46,7 +46,7 @@ export default defineConfig({
         start_url: "/",
         display: "standalone",
         background_color: "#0f0f0f",
-        theme_color: "#2563eb",
+        theme_color: "#10b981",
         orientation: "any",
         min_viewport_width: 360,
         icons: [
@@ -59,11 +59,12 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          // Phaser is ~1MB minified (~300KB gzipped). Split it into its own
-          // long-lived vendor chunk so the app chunk stays small and cacheable
-          // — the compliance bundle-size check measures the app chunk only.
-          phaser: ["phaser"],
+        // Phaser is ~1MB minified (~300KB gzipped). Split it into its own
+        // long-lived vendor chunk so the app chunk stays small and cacheable
+        // — the compliance bundle-size check measures the app chunk only.
+        // (advancedChunks is rolldown's replacement for manualChunks.)
+        advancedChunks: {
+          groups: [{ name: "phaser", test: /node_modules[\/\\]phaser/ }],
         },
       },
     },
