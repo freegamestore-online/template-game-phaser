@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "@freegamestore/games/theme.css";
 
 /* Tailwind scans the games SDK build for its class names (@freegamestore/games). */
 @source "../node_modules/@freegamestore/games/dist";
