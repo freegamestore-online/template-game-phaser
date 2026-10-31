@@ -4,9 +4,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "node scripts/check-styling.mjs && vite build",
     "preview": "vite preview",
-    "typecheck": "tsc -b"
+    "typecheck": "tsc -b",
+    "check:styling": "node scripts/check-styling.mjs"
   },
   "dependencies": {
     "@freegamestore/games": "^0.16.0",
