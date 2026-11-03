@@ -9,6 +9,6 @@ Keep layouts responsive at 320px and put wide tables/carousels in their own scro
 containers. Maps and game canvases can handle their own gestures.
 
 These defaults also apply when launched from the home screen. Browser or accessibility
-settings can override zoom restrictions. For an app that needs browser pinch zoom,
-remove `maximum-scale` and `user-scalable` from `web/index.html` and change the root
-`touch-action` rules to `manipulation`. Keep the app's text-size controls available.
+settings can override zoom restrictions. FGS compliance requires the viewport zoom
+restriction; provide game-level zoom controls for maps or images instead of removing
+it. Keep the app's text-size controls available.
